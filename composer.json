@@ -1,0 +1,23 @@
+{
+    "name": "top7up/hijri",
+    "description": "Convert dates between Hijri (Umm al-Qura) and Gregorian calendars.",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "keywords": ["hijri", "umm-al-qura", "islamic-calendar", "gregorian", "calendar", "arabic"],
+    "authors": [
+        {
+            "name": "Abdul-Aziz Al-Oraij",
+            "homepage": "http://aziz.oraij.com/",
+            "role": "Original author (2007)"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ext-calendar": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hijri\\": "src/"
+        }
+    }
+}
