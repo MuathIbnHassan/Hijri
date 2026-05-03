@@ -129,7 +129,7 @@ class UCal {
 		$m=$i-12*$ii; // month
 		$d=$mjd-$this->jdl[$i-1]; //day
 		$ml=$this->jdl[$i]-$this->jdl[$i-1];// Month Length
-		list ($id[month], $id[day], $id[year], $id[ln], $id[ml]) = explode("/","$m/$d/$y/$iln/$ml");
+		list ($id['month'], $id['day'], $id['year'], $id['ln'], $id['ml']) = explode("/","$m/$d/$y/$iln/$ml");
 		return ($id);
 	}
       /**
@@ -150,9 +150,9 @@ class UCal {
 		$ml=$this->jdl[$i]-$this->jdl[$i-1];
 		$iln=$i+15588; // Islamic lunation number (Births of New Moons)
 		$jd=$mjd+2400000;
-		list ($g[month], $g[day], $g[year], $g[ln], $g[ml]) = explode("/",JDToGregorian($jd)."/$iln/$ml");
-		$g[month] = intval($g[month]);
-		$g[day] = intval($g[day]);
+		list ($g['month'], $g['day'], $g['year'], $g['ln'], $g['ml']) = explode("/",JDToGregorian($jd)."/$iln/$ml");
+		$g['month'] = intval($g['month']);
+		$g['day'] = intval($g['day']);
 		return ($g);
 	}
       /**
