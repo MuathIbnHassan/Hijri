@@ -1,6 +1,6 @@
-<?
-require __DIR__ . '/src/UCal.php';
-$d = new \Hijri\UCal;
+<?php
+require __DIR__ . '/vendor/autoload.php';
+$d = new \Hijri\UCal();
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -105,10 +105,10 @@ a {
       <td bgcolor="#CCCCCC">&nbsp;</td>
       <td>&nbsp;</td>
       <td nowrap="nowrap"><span class="style1">
-        <?
-	  if($_POST[h]){
-		  $date = $d->u2g($_POST[hd],$_POST[hm],$_POST[hy]);
-		  echo " ==> $date[day] / $date[month] / $date[year] <i>using \$uCal->u2g( $_POST[hd],$_POST[hm],$_POST[hy] );</i>";
+        <?php
+	  if (!empty($_POST['h'])) {
+		  $date = $d->u2g($_POST['hd'], $_POST['hm'], $_POST['hy']);
+		  echo " ==> {$date['day']} / {$date['month']} / {$date['year']} <i>using \$uCal->u2g( {$_POST['hd']},{$_POST['hm']},{$_POST['hy']} );</i>";
 	  }
 	  ?>
       </span></td>
@@ -145,10 +145,10 @@ a {
       <td bgcolor="#CCCCCC">&nbsp;</td>
       <td>&nbsp;</td>
       <td nowrap="nowrap"><span class="style1">
-        <?
-	  if($_POST[g]){
-		  $date = $d->g2u($_POST[gd],$_POST[gm],$_POST[gy]);
-		  echo " ==> $date[day] / $date[month] / $date[year]  <i>using \$uCal->g2u( $_POST[gd],$_POST[gm],$_POST[gy] );</i>";
+        <?php
+	  if (!empty($_POST['g'])) {
+		  $date = $d->g2u($_POST['gd'], $_POST['gm'], $_POST['gy']);
+		  echo " ==> {$date['day']} / {$date['month']} / {$date['year']}  <i>using \$uCal->g2u( {$_POST['gd']},{$_POST['gm']},{$_POST['gy']} );</i>";
 	  }
 	  ?>
       </span></td>
@@ -163,8 +163,8 @@ a {
 $closer = "?>";
 $code = <<<END
 <?php
-include('uCal.class.php');
-\$d = new uCal;
+require __DIR__ . '/vendor/autoload.php';
+\$d = new \Hijri\UCal();
 
 echo "Today is: <b>" . \$d->date("d/m/y -  l, F jS h:i A")."</b><br>\\n This month length is: <b>".\$d->date("t")\n. "</b>days, and Islamic lunation number is: <b>" .\$d->date("L - g a - r")."</b><hr>\\n";
 
@@ -187,11 +187,11 @@ echo "<div dir=\"rtl\">تاريخ اليوم: <b>" . $d->date("d/m/y -  l, F jS 
 </div>
 <div align="left" class="title">Example 3:</div>
 <div class="div">
-<?
+<?php
 $code = <<<END
 <?php
-include('uCal.class.php');
-\$d = new uCal;
+require __DIR__ . '/vendor/autoload.php';
+\$d = new \Hijri\UCal();
 
 \$d->setLang("en");
 echo "Given date: <b>" . \$d->date("d/m/y -  l, F jS h:i A",\$d->mktime(22,10,30,2,3,1428), 0)\n."</b><br>\\n This month length is: <b>".\$d->date("t",\$d->mktime(22,10,30,2,3,1428), 0)\n. "</b> is this a leap year? <b>" .\$d->date("L - g a - r",\$d->mktime(22,10,30,2,3,1428), 0)."</b><hr>\\n";
@@ -208,7 +208,7 @@ highlight_string($code);
 </div>
 <div align="center" class="outputs">Outputs:</div>
 <div class="div">
-  <?
+  <?php
 $d->setLang("en");
 echo "Given date is: <b>" . $d->date("d/m/y -  l, F jS h:i A",$d->mktime(22,10,30,2,3,1428), 0)."</b><br>\n This month length is: <b>".$d->date("t",$d->mktime(22,10,30,2,3,1428), 0). "</b> is this a leap year?  <b>" .$d->date("L - g a - r",$d->mktime(22,10,30,2,3,1428), 0)."</b><hr>\n";
 $d->setLang("ar");
